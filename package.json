@@ -53,7 +53,11 @@
   "pnpm": {
     "overrides": {
       "@ledgerhq/hw-transport": "^6.31.12",
-      "@ledgerhq/cryptoassets-evm-signatures": "^13.6.5",
+      "@ledgerhq/cryptoassets": "file:../ledger-live/libs/ledgerjs/packages/cryptoassets",
+      "@ledgerhq/live-env": "^2.19.0",
+      "@ledgerhq/types-live": "^6.87.0",
+      "axios": "^1.12.2",
+      "@reduxjs/toolkit": "^2.8.2",
       "@ledgerhq/logs": "^6.13.0"
     }
   }
