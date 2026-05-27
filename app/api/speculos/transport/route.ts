@@ -27,7 +27,7 @@ export async function POST(request: Request) {
       if (opData.message === undefined) {
         return Response.json({'status': 'error', 'msg': 'Message is required for personal message signing'});
       }
-      const personalMsg = opData.message;
+      const personalMsg = Buffer.from(opData.message, "utf8").toString("hex");
       return await signPersonalMessage(device, personalPath, personalMsg);
     }
     case 'signTIP712Message': {
@@ -50,7 +50,8 @@ async function signPersonalMessage(device: SpeculosDeviceInternal, path: string,
   console.log(appConfig);
   const address = await app.getAddress(path);
   console.log(address);
-  const signedMsg = await app.signPersonalMessage(path, message);
+  console.log(message);
+  const signedMsg = await app.signPersonalMessageFullDisplay(path, message);
   return Response.json({'status': 'success', 'signedMsg': signedMsg, 'address': address});
 }
 
